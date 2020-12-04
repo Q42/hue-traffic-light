@@ -77,6 +77,11 @@
         opacityGreen = trafficLight[2] * 1 + 0.2;
     }
 
+    function reset() {
+        localStorage.clear();
+        document.location.reload();
+    }
+
     turnOff();
     updateTrafficLight();
 </script>
@@ -89,10 +94,11 @@
         <div class="light green" style="opacity: { opacityGreen }" on:click="{clickGreen}"></div>
     </div>
 
-    <div>
+    <!-- <div>
         using ip: {ip}
         using token: {token}
-    </div>
+    </div> -->
+    <button on:click="{reset}">reset</button>
 </main>
 
 <svelte:head>

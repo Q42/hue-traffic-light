@@ -1,17 +1,13 @@
 <script>
-import App from "./App.svelte";
     export let ip;
     export let token;
-    let tokenError = null;
-
-    const app_id = 'TRAFFIC_LIGHT';
-    const device_id = 123; // TODO random generate;
     const discoverUrl = 'https://discovery.meethue.com/';
+    let tokenError = null;
 
     async function discoverBridge() {
         const response = await fetch(discoverUrl);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (json.length && json[0] && json[0]['internalipaddress'] ) {
             ip = json[0].internalipaddress;
         }
@@ -24,7 +20,7 @@ import App from "./App.svelte";
             body: JSON.stringify({ devicetype: `${app_id}#${device_id}`})
         });
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (json && json.length && json[0]) {
             if (json[0].error) {
                 tokenError = json[0].error;
@@ -34,6 +30,8 @@ import App from "./App.svelte";
                 token = json[0].success.username;
 
                 // TODO: store ip && token in localstorage
+                localStorage.setItem('ip', ip);
+                localStorage.setItem('token', token);
             }
             
         }
@@ -58,7 +56,5 @@ import App from "./App.svelte";
 {/if}
 
 {#if ip || token}
-    <button on:click="{cancel}">cancel</button>
+    <button on:click="{cancel}">reset</button>
 {/if}
-
-
