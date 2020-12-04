@@ -19,7 +19,7 @@
     }
 
     async function requestToken() {
-        const url = `http://${ip}/api`
+        const url = `https://${ip}/api`
         const response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify({ devicetype: `${app_id}#${device_id}`})

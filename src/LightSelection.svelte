@@ -6,7 +6,7 @@
     let lights = [];
 
     async function getLights() {
-        const url = `http://${ip}/api/${token}/lights`;
+        const url = `https://${ip}/api/${token}/lights`;
         const response = await fetch(url);
         const json = await response.json();
         

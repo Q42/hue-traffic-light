@@ -2,7 +2,7 @@
     export let ip;
     export let token;
     export let lightIndex;
-    const api = `http://${ip}/api/${token}`
+    const api = `https://${ip}/api/${token}`
     const colors = { red: 0, orange: 25, green: 80 };
     const colorNames = Object.keys(colors);
     const trafficLight = [false, false, false]; // red, green, blue
