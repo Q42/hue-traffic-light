@@ -1,6 +1,8 @@
 <script>
     export let ip;
     export let token;
+    const device_id = 42; 
+    const app_id = 'TRAFFIC_LIGHT';
     const discoverUrl = 'https://discovery.meethue.com/';
     let tokenError = null;
 
@@ -36,6 +38,7 @@
             
         }
     }
+
     function cancel() {
         ip = null;
     }

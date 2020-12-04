@@ -1,8 +1,8 @@
 <script>
     export let ip;
     export let token;
+    export let lightIndex;
     const api = `http://${ip}/api/${token}`
-    const lightIndex = 2;
     const colors = { red: 0, orange: 25, green: 80 };
     const colorNames = Object.keys(colors);
     const trafficLight = [false, false, false]; // red, green, blue
@@ -82,6 +82,10 @@
         document.location.reload();
     }
 
+    function chooseLight() {
+        localStorage.removeItem('light');
+        document.location.reload();
+    }
     turnOff();
     updateTrafficLight();
 </script>
@@ -94,11 +98,12 @@
         <div class="light green" style="opacity: { opacityGreen }" on:click="{clickGreen}"></div>
     </div>
 
-    <!-- <div>
+    <div>
         using ip: {ip}
         using token: {token}
-    </div> -->
+    </div>
     <button on:click="{reset}">reset</button>
+    <button on:click="{chooseLight}">choose light</button>
 </main>
 
 <svelte:head>
