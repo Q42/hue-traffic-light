@@ -92,53 +92,54 @@
 
 <main>
     <h1>What is your <br> Traffic Light Color?</h1>
-    <div class="traffic-light">
-        <div class="light red" style="opacity: { opacityRed }" on:click="{clickRed}" ></div>
-        <div class="light orange" style="opacity: { opacityOrange }" on:click="{clickOrange}" ></div>
-        <div class="light green" style="opacity: { opacityGreen }" on:click="{clickGreen}"></div>
+    <div class="wrapper">
+        <div class="traffic-light">
+            <div class="light red" style="opacity: { opacityRed }" on:click="{clickRed}" ></div>
+            <div class="light orange" style="opacity: { opacityOrange }" on:click="{clickOrange}" ></div>
+            <div class="light green" style="opacity: { opacityGreen }" on:click="{clickGreen}"></div>
+        </div>
     </div>
 
-    <div>
-        using ip: {ip}
-        using token: {token}
-    </div>
-    <button on:click="{reset}">reset</button>
     <button on:click="{chooseLight}">choose light</button>
+    <button on:click="{reset}">reset</button>
+    
+    <!-- <div class="debug">
+        using ip: {ip} <br>
+        using token: {token}
+    </div> -->
 </main>
-
-<svelte:head>
-    <style>
-        body {
-            background-color: #555555;
-        }
-    </style>
-</svelte:head>
 
 <style>
     
     h1 {
         text-align: center;
-        color: #9f9f9f;
+        color: #cbcbcb;
     }
-    main {
-        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        display:flex;
-        flex-direction: column;
-        justify-content: space-around;
+
+    .wrapper {
+        position: relative;
+        flex-grow: 1;
     }
     .traffic-light {
         background-color: #242424;
-        padding: 20px;
-        border-radius: 50px;
-        margin: auto;
-        flex-shrink: 1;
-    }
-    .light {
+        border-radius: 40%/16%;
+        border: 5px solid grey;
+        margin-bottom: 20px;
+        height: 350px;
         width: 100px;
-        height: 100px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .light {
+        width: 90%;
+        height: 0;
+        padding-top: 90%;
         border-radius: 50%;
-        margin-bottom: 10px;
         transition: opacity 0.2s linear;
+        align-self: center;
     }
     .red {
         background-color: red;
@@ -150,4 +151,9 @@
         background-color: lime;
         margin: 0;
     }
+
+    .debug {
+        color: #303030;
+    }
+    
 </style>

@@ -25,19 +25,20 @@
     getLights();
 </script>
 
-<div>
-    Which light do you want to use for the Traffic light?
-</div>
 
-<div class='lights'>
+<main>
+    <h1>
+        Which light do you want to use for the Traffic light?
+    </h1>
+    
     {#each lights as {name}, i }
         <button on:click={e => select(i) } >{name}</button>
     {/each}
-</div>
+    
+</main>
 
 <style>
-    .lights {
-        display: flex;
-        flex-direction: column;
+    h1 {
+        flex-grow: 1;;
     }
 </style>
