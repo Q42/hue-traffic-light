@@ -1,6 +1,6 @@
 # Hue Traffic Light
 
-
+<img src="https://user-images.githubusercontent.com/461650/102360565-74b9e300-3fb2-11eb-846a-56c1d1a07243.png"  width="200" >
 
 ## Get started
 
