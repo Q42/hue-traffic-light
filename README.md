@@ -46,7 +46,6 @@ If you're building a single-page app (SPA) with multiple routes, sirv needs to b
 
 ## Deploying to firebase
 
-Install `vercel` if you haven't already:
 
 ```bash
 firebase deploy --only hosting
