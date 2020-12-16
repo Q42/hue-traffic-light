@@ -36,7 +36,6 @@
                 token = json[0].success.username;
                 clearTimeout(pollTimout);
 
-                // TODO: store ip && token in localstorage
                 localStorage.setItem('ip', ip);
                 localStorage.setItem('token', token);
             }
