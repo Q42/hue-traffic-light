@@ -5,7 +5,7 @@
     const app_id = 'TRAFFIC_LIGHT';
     const discoverUrl = 'https://discovery.meethue.com/';
     let tokenError = null;
-
+    let bridgeError = null;
     let pollTimout = null;
 
     async function discoverBridge() {
@@ -19,11 +19,12 @@
     }
 
     async function requestToken() {
-        const url = `https://${ip}/api`
+        const url = `https://${ip}/api`;
         const response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify({ devicetype: `${app_id}#${device_id}`})
-        });
+        }).catch(e=> bridgeError = e.message);
+        
         const json = await response.json();
         
         // console.log(json)
@@ -45,7 +46,13 @@
 
     async function pollBridgeForButtonPress() {
         console.log('polling');
-        await requestToken();
+        try {
+            await requestToken();
+        }
+        catch(ex) {
+            console.error('oh jee', ex);
+            return;
+        }
         if (!token)
             pollTimout = setTimeout(pollBridgeForButtonPress, 500);
     }
@@ -77,6 +84,11 @@
         <!-- <button on:click="{requestToken}">request token</button> -->
         {/if}
         <p>Bridge found {ip}</p>
+        {#if bridgeError}
+            <p>{bridgeError}</p>
+            <p>This is probably due to the self-signed certificate of your bridge.</p>
+            <p>You need to <a href="http://www.google.com/search?q=trust+self-signed+certificate" target="_blank">trust the self-signed certificate</a>.</p>
+        {/if}
     {/if}
 
     {#if ip || token}
